@@ -2,5 +2,3 @@ theme: jekyll-theme-slate
 title: R5 Subscription Tools
 description: Subscription testing tools from the Microsoft Healthcare Madison Team
 show_downloads: false
-github:
-  is_project_page: false
