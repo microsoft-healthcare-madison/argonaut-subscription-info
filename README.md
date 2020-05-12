@@ -1,4 +1,4 @@
-# Argonaut Subscription Projects
+# MS-Madison Subscriptions
 
 This is a general overview page for the software hosted at [subscriptions.argo.run](http://subscriptions.argo.run), which can be used to test R5 Subscriptions.
 
