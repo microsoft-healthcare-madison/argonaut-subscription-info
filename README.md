@@ -23,10 +23,12 @@ Projects are currently running the [May 2020 R5](http://hl7.org/fhir/2020May/) m
 * [SubscriptionStatus](http://hl7.org/fhir/2020May/subscriptionstatus.html)
 * subscription-notification [Bundle](http://hl7.org/fhir/2020May/bundle.html#subscription-notification)
 
-These projects additionally use a few artifacts from the Argonaut 2019 Subscriptions Project:
+In addition to the R5 version, the projects also support the [Subscriptions R5 Backport IG](https://argonautproject.github.io/subscription-backport-ig/)
+
+The supported SubscriptionTopic for testing is from the Argonaut 2019 Subscriptions work:
 * Draft [Encounters IG](https://github.com/argonautproject/subscriptions/blob/master/encounters-ig.md)
   * Canonical SubscriptionTopic: [encounter-start](https://raw.githubusercontent.com/argonautproject/subscriptions/master/canonical/subscriptiontopic-encounter-start.json)
-* Draft [Backport to R4](https://github.com/argonautproject/subscriptions/blob/master/backport-to-r4.md) Guide
+
 
 # [FHIR Server Proxy](#server)
 * [GitHub Repo](https://github.com/microsoft-healthcare-madison/argonaut-subscription-server-proxy)
@@ -35,8 +37,9 @@ These projects additionally use a few artifacts from the Argonaut 2019 Subscript
 The Server Proxy is a thin server layer (pointing to [hapi.fhir.org](hapi.fhir.org)) which intercepts resources needed to support subscriptions:
 * Subscription
 * SubscriptionTopic
-* Basic
 * Encounter
+
+To use the R4 Backport, set the `Accept` header on requests to use `application/fhir+json; fhirVersion=4.0`
 
 # [Client](#client)
 * [GitHub Repo](https://github.com/microsoft-healthcare-madison/argonaut-subscription-client-ui)
@@ -50,8 +53,7 @@ Since the client is in the browser and the `Endpoint Host` is public, you can us
 * Settings (e.g., URLs, light/dark look, etc.)
   * FHIR Server URL can be set to your test URL
   * Again, since everything runs in the browser, it can point to localhost, etc.
-  * The "Use Backport to R4" setting turns on/off wrapping `Subscription` and `SubscriptionTopic` in `Basic` resources
-    * Note that notifications are still sent using R5 models - I have an idea I'm working on for this
+  * The "Use Backport to R4" setting turns on/off using the R4 Backport instead of R5
   * Connecting gets the Capabilities Statement and checks for needed capabilities based on the operations in the UI
   * If you are having trouble connecting to your server, turn on the 'Skip FHIR Server Capabilities Check' toggle
 * Useful links (e.g., to the current and previous Connectathons, to the GitHub repos of this software, etc.)
