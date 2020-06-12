@@ -8,6 +8,8 @@ If you have any comments or questions, feel free to ping me on [Zulip](https://c
 
 There are three main projects which together implement the entire Subscriptions workflow:
 * A C# [FHIR Server Proxy](#server)
+  * Interacting in [R5](#server-r5)
+  * Interacting in [R4 via Backport](#server-backport)
 * A React/TypeScript [Client](#client)
 * A C# [Endpoint Hosting Server](#endpoint-host)
 
@@ -23,8 +25,6 @@ Projects are currently running the [May 2020 R5](http://hl7.org/fhir/2020May/) m
 * [SubscriptionStatus](http://hl7.org/fhir/2020May/subscriptionstatus.html)
 * subscription-notification [Bundle](http://hl7.org/fhir/2020May/bundle.html#subscription-notification)
 
-In addition to the R5 version, the projects also support the [Subscriptions R5 Backport IG](https://argonautproject.github.io/subscription-backport-ig/)
-
 The supported SubscriptionTopic for testing is from the Argonaut 2019 Subscriptions work:
 * Draft [Encounters IG](https://github.com/argonautproject/subscriptions/blob/master/encounters-ig.md)
   * Canonical SubscriptionTopic: [encounter-start](https://raw.githubusercontent.com/argonautproject/subscriptions/master/canonical/subscriptiontopic-encounter-start.json)
@@ -39,7 +39,18 @@ The Server Proxy is a thin server layer (pointing to [hapi.fhir.org](hapi.fhir.o
 * SubscriptionTopic
 * Encounter
 
-To use the R4 Backport, set the `Accept` header on requests to use `application/fhir+json; fhirVersion=4.0`
+## [Current R5](#server-r5)
+
+The server is currently running FHIR [R5 Preview #2 (May 2020)](http://hl7.org/fhir/2020May/).
+
+## [Backport to R4](#server-backport)
+
+In addition to the R5 version, the projects also support the [Subscriptions R5 Backport IG](https://argonautproject.github.io/subscription-backport-ig/).  In order to use the R4 Backport, set the `Accept` header on requests to: `application/fhir+json; fhirVersion=4.0`.
+
+If a `Subscription` is created in R4 mode, all notifications to the endpoint will be done with R4 structures:
+* Notifications are `history` bundles
+* First entry in the bundle is a `Parameters` resource with information equivalent to `SubscriptionStatus`
+* Embedded resources (if `full-resource`) will be R4 compliant
 
 # [Client](#client)
 * [GitHub Repo](https://github.com/microsoft-healthcare-madison/argonaut-subscription-client-ui)
