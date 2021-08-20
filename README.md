@@ -8,8 +8,8 @@ If you have any comments or questions, feel free to ping me on [Zulip](https://c
 
 There are three main projects which together implement the entire Subscriptions workflow:
 * A C# [FHIR Server Proxy](#server)
-  * Interacting in [R4 via Backport](#server-backport)
-  * Interacting in [R5](#server-r5)
+  * Interacting in [R4 via Backport IG](#backport)
+  * Interacting in [R5](#r5)
 * A React/TypeScript [Client](#client)
 * A C# [Endpoint Hosting Server](#endpoint-host)
 
@@ -21,16 +21,16 @@ Additionally, there are two basic client projects to serve as examples:
 
 Projects are currently running from CI builds.
 
-## FHIR R4B + Backport IG
+## FHIR R4B + Backport IG[](#backport)
 * Implementation Guides
   * [Subscription Backport IG](https://argonautproject.github.io/subscription-backport-ig/)
 * FHIR Resources
-  * [SubscriptionTopic](http://build.fhir.org/branches/subscription-b/subscriptiontopic.html)
-  * [Subscription](http://build.fhir.org/branches/subscription-b/subscription.html)
-  * [SubscriptionStatus](http://build.fhir.org/branches/subscription-b/subscriptionstatus.html)
-  * [Bundle](http://build.fhir.org/branches/subscription-b/bundle.html) (type: `history`)
+  * [SubscriptionTopic](http://build.fhir.org/branches/R4B/subscriptiontopic.html)
+  * [Subscription](http://build.fhir.org/branches/R4B/subscription.html)
+  * [SubscriptionStatus](http://build.fhir.org/branches/R4B/subscriptionstatus.html)
+  * [Bundle](http://build.fhir.org/branches/R4B/bundle.html) (type: `history`)
 
-## FHIR R5
+## FHIR R5[](#r5)
 * Implementation Overview
   * [Subscriptions Framework](http://build.fhir.org/subscriptions.html)
 * FHIR Resources
